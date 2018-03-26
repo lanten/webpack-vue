@@ -1,0 +1,4 @@
+{
+  "presets": ["vue"]
+  // "plugins": ["transform-vue-jsx", "babel-plugin-transform-decorators-legacy"]
+}
