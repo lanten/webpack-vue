@@ -95,9 +95,9 @@ if (NODE_ENV == 'development') {
   webpackConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new vConsolePlugin({
-      enable: true
-    }),
+    // new vConsolePlugin({
+    //   enable: true
+    // }),
   )
 } else if (NODE_ENV == 'production') {
   // 生产环境配置

@@ -64,7 +64,6 @@ app.get('*/*', ({ url }, res, next) => {
   // const htmlFile = devMiddleware.fileSystem.readFileSync('./index.html', 'utf-8')
   const htmlFile = devMiddleware.fileSystem.readFileSync(path.join(webpackConfig.output.path, 'index.html'))
 
-  console.log('=> 重定向', url)
   res.writeHeader(200, { 'Content-Type': 'text/html' })
   res.end(htmlFile)
 })
@@ -84,11 +83,6 @@ app.get('*/*', ({ url }, res, next) => {
 //     console.log(`\n代理地址：${config.proxy.target}`)
 //   }
 // }
-
-// app.use(httpProxyMiddleware('**/*.rest', {
-//   target: 'http://fe.iwjw.com:8888/api/fete_api/eJWuGZ/LPI0jW/mock'
-// }))
-
 
 app.listen(config.port, function () {
   process.stdout.clearLine()
