@@ -19,7 +19,12 @@ export default {
   name: 'home',
 
   mounted() {
-
+    // request
+    // this.$api.request().then(res => {
+    //   console.log(res)
+    // }).catch(err => {
+    //   console.error(err)
+    // })
   }
 }
 </script>

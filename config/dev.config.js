@@ -19,7 +19,7 @@ module.exports = {
   },
 
   provide: {
-    $api: 'src/api'
+    // $api: 'src/api'
   },
 
   proxy: [

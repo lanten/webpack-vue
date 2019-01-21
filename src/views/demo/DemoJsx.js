@@ -1,9 +1,5 @@
 export default {
 
-  mounted() {
-    console.log(this.$store)
-  },
-
   render(h) {
     return (
       <div class="okk">
