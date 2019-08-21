@@ -1,30 +1,23 @@
 <template>
-  <div id="app">
-    <router-view v-if="isRouterAlive"></router-view>
+  <div id="app" :class="[`app-wrap-${$route.name}`]">
+    <div id="content" :class="['app-content', `app-content-${$route.name}`]">
+      <router-view />
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app',
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import Navbar from './components/navbar'
 
-  data() {
-    return {
-      isRouterAlive: true
-    }
-  },
-  methods: {
-    reload() {
-      this.isRouterAlive = false
-      this.$nextTick(() => (this.isRouterAlive = true))
-    }
-  },
-  mounted() {
-    // 在根节点添加一个 reload 方法
-    this.$parent.reload = this.reload
-  }
-}
+const lang = $app.systemInfo.language
+
+@Component({
+  components: { Navbar },
+})
+export default class App extends Vue {}
 </script>
 
-<style lang="scss">
+<style lang="less">
+@import './styles/index.less';
 </style>

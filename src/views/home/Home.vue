@@ -1,35 +1,27 @@
 <template>
   <div class="home">
-    <p>home is ok</p>
-    <button @click="$router.push({name:'demo-1'})">demo-1</button>
-    <button @click="$router.push({name:'demo-jsx'})">demo-jsx</button>
+    <p>home is created</p>
 
-    <hr>
-
-    <div>
-      <p>{{$store.state.count}}</p>
-      <button @click="$store.commit('addCount',2)">addCount</button>
-      <button @click="$store.commit('reduceCount',1)">reduceCount</button>
-    </div>
+    <ul>
+      <li><router-link class="mt-8 ml-16 fs-24" to="any">404</router-link></li>
+      <li><router-link class="mt-8 ml-16 fs-24" to="/about">about</router-link></li>
+      <li><router-link class="mt-8 ml-16 fs-24" to="/error-page">error-page</router-link></li>
+    </ul>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'home',
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
 
+@Component
+export default class Home extends Vue {
   mounted() {
-    // request
-    // this.$api.request().then(res => {
-    //   console.log(res)
-    // }).catch(err => {
-    //   console.error(err)
-    // })
+    console.log('home is mounted')
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .home {
 }
 </style>

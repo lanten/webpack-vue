@@ -6,29 +6,41 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const vConsolePlugin = require('vconsole-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+// const vConsolePlugin = require('vconsole-webpack-plugin')
 
+const {
+  source,
+  dist,
+  template,
+  publicPath,
+  alias,
+  entry,
+  provide,
+} = require('../config/dev.config')
 
-const { source, dist, template, publicPath, alias, entry, provide } = require('../config/dev.config')
 const appConfig = require('../config/app.config')
 
 const { NODE_ENV } = process.env
 
 const appPath = path.join(__dirname, `../${source}`)
 
-const cssLoader = `css-hot-loader!${NODE_ENV == 'development' ? 'style-loader' : MiniCssExtractPlugin.loader}!css-loader${NODE_ENV == 'production' ? '!postcss-loader' : ''}`
+const cssLoader = `css-hot-loader!${
+  NODE_ENV == 'development' ? 'style-loader' : MiniCssExtractPlugin.loader
+}!css-loader${NODE_ENV == 'production' ? '!postcss-loader' : ''}`
 
 console.log(NODE_ENV, appPath)
+
+process.env.BASE_URL = publicPath
 
 const webpackConfig = {
   mode: NODE_ENV,
   target: 'web',
   entry,
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    modules: [process.cwd(), "node_modules"],
-    alias
+    extensions: ['.ts', '.jsx', '.js', '.jsx', '.vue', '.json'],
+    modules: [process.cwd(), 'node_modules'],
+    alias,
   },
   output: {
     publicPath,
@@ -42,16 +54,28 @@ const webpackConfig = {
       {
         test: /\.vue$/,
         include: appPath,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.js[x]?$/,
         include: appPath,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
       },
       {
         test: /\.(sass|scss)$/,
         loader: `${cssLoader}!sass-loader`,
+      },
+      {
+        test: /\.less$/,
+        loader: `${cssLoader}!less-loader`,
       },
       {
         test: /\.css$/,
@@ -62,9 +86,9 @@ const webpackConfig = {
         loader: 'file-loader',
         query: {
           name: 'assets/[name].[hash:7].[ext]',
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
 
   plugins: [
@@ -77,16 +101,16 @@ const webpackConfig = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: "css/[name]-[chunkhash:7].css"
+      chunkFilename: 'css/[name]-[chunkhash:7].css',
     }),
-    new webpack.ProvidePlugin(provide)
+    new webpack.ProvidePlugin(provide),
   ],
 
   optimization: {
     // runtimeChunk: true,
     splitChunks: {
-      name: "common",
-    }
+      name: 'common',
+    },
   },
 }
 
@@ -94,7 +118,7 @@ if (NODE_ENV == 'development') {
   // 开发环境配置
   webpackConfig.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
     // new vConsolePlugin({
     //   enable: true
     // }),
@@ -107,12 +131,10 @@ if (NODE_ENV == 'development') {
         compress: {
           pure_funcs: ['console.log'], // 删除console.log, 保留 info ，warn，error 等
         },
-      }
+      },
     })
   )
-  webpackConfig.optimization.minimizer = [
-    new OptimizeCSSAssetsPlugin()
-  ]
+  webpackConfig.optimization.minimizer = [new OptimizeCSSAssetsPlugin()]
 }
 
 module.exports = webpackConfig

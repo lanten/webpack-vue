@@ -8,18 +8,19 @@ module.exports = {
   publicPath: '/',
   port: 8087,
 
-
   entry: {
-    app: path.join('src/index.js'),
+    // app: path.join('src/index.js'),
+    app: path.join('src/main.ts'),
   },
 
   alias: {
-    'vue$': 'vue/dist/vue.common.js',
+    vue$: 'vue/dist/vue.common.js',
     '@': path.resolve(__dirname, '../'),
   },
 
   provide: {
-    // $api: 'src/api'
+    $app: 'src/utils/app',
+    $const: 'src/utils/const',
   },
 
   proxy: [
@@ -44,5 +45,5 @@ module.exports = {
     prod: {
       publicPath: '/',
     },
-  }
+  },
 }

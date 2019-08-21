@@ -1,0 +1,56 @@
+// colors
+@color_main: #FCC776;
+@color_white: #F3F3F3;
+@color_blue: #1862D9;
+@color_black: #111A34;
+@color_red: #FF575F;
+@color_default: #767A82;
+@color_gray: #8D939D;
+@color_light: #C5CAD5;
+@color_green: rgba(82,183,43,1);
+
+// 颜色集 用于遍历, 值为所定义的颜色变量后半部分 : @color_{value}
+@colors: main, gray, light, black, red, white, green;
+
+// ---
+@color_border: fade(#E0E0E0, 15.86%);
+@color_border_light: rgba(224, 224, 224, 0.1);
+@border_light_bottom: 1px solid @color_border_light;
+// ----
+@color_background: #111217;
+@color_background2: #1E1F27;
+@color_background_gray: #2A2C36;
+@color_placeholder: #C5CAD5;
+@color_disabled: fade(@color_white, 50%);
+@color_navbar: @color_background;
+@color_footer: #061649;
+// ----
+// $colors_text: (main:$color_main,
+// blue:$color_blue,
+// dark:$color_dark,
+// default:$color_default,
+// gray:$color_gray,
+// light:$color_light,
+// error:$color_error,
+// white:white);
+
+@height_navbar: 73px;
+@height_footer: 256px;
+
+
+@width_content: 1200px;
+@width_min: 900px;
+
+@padding: 16px;
+@padding_layout: 124px;
+
+// other
+
+@padding: 16px;
+@shadow: 0 1px 3px rgba(26, 26, 26, .1);
+@radius: 3px;
+@radius_lg: 6px;
+@animation: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@animationFadeOut: cubic-bezier(0.175, 0.82, 0.265, 1);
+@animationFadeIn: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+@animationOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);

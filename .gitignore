@@ -7,4 +7,5 @@ zip/
 dist-dev/
 
 npm-debug.log
+yarn-error.log
 /package-lock.json
