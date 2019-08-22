@@ -5,9 +5,12 @@
   "repository": "https://github.com/lanten/webpack-vue.git",
   "author": "lanten <974986907@qq.com>",
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel-node build/build.js",
     "dev": "cross-env NODE_ENV=development babel-node build/dev-server.js",
     "dev-build": "cross-env NODE_ENV=development BUILD_ENV=dev babel-node build/dev-build.js",
+    "build": "cross-env NODE_ENV=production babel-node build/build.js",
+    "build:dev": "cross-env NODE_ENV=production BUILD_ENV=dev babel-node build/build.js",
+    "build:test": "cross-env NODE_ENV=production BUILD_ENV=test babel-node build/build.js",
+    "build:prod": "cross-env NODE_ENV=production BUILD_ENV=prod babel-node build/build.js",
     "docs": "typedoc --out docs/type src"
   },
   "dependencies": {
