@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/lanten/webpack-vue.git",
-  "author": "lanten <974986907@qq.com>",
+  "author": "lanten <lanten233@163.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development babel-node build/dev-server.js",
     "dev-build": "cross-env NODE_ENV=development BUILD_ENV=dev babel-node build/dev-build.js",
