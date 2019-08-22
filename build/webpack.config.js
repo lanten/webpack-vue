@@ -125,15 +125,15 @@ if (NODE_ENV == 'development') {
   )
 } else if (NODE_ENV == 'production') {
   // 生产环境配置
-  webpackConfig.plugins.push(
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          pure_funcs: ['console.log'], // 删除console.log, 保留 info ，warn，error 等
-        },
-      },
-    })
-  )
+  // webpackConfig.plugins.push(
+  //   new UglifyJsPlugin({
+  //     uglifyOptions: {
+  //       compress: {
+  //         pure_funcs: ['console.log'], // 删除console.log, 保留 info ，warn，error 等
+  //       },
+  //     },
+  //   })
+  // )
   webpackConfig.optimization.minimizer = [new OptimizeCSSAssetsPlugin()]
 }
 
