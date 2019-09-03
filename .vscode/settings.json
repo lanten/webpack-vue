@@ -15,5 +15,4 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "vue-i18n.i18nPaths": "src/lang",
 }
